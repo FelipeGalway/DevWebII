@@ -7,7 +7,7 @@ namespace exercicio5 {
 
     while (i < frutas.length) {
         console.log(frutas[i]);
-        i += 1;
+        i++;
     } 
 
 }
