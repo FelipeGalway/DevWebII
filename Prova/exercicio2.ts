@@ -4,6 +4,6 @@ namespace exercicio2 {
         console.log("par");
     }
     else {
-        console.log("ímpar")
+        console.log("ímpar");
     }
 }
