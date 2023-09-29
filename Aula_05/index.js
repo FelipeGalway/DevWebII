@@ -1,4 +1,5 @@
 const {createApp} = Vue;
+
 createApp({
     data() {
         return {
@@ -10,7 +11,6 @@ createApp({
     },
     methods: {
         lidarBotao(botao) {
-            //console.log(botao)
             switch(botao) {
                 case "+":
                 case "-":
@@ -19,24 +19,63 @@ createApp({
                     this.lidarOperador(botao);
                     break;
                 case "=":
-                    this.lidarIgual(botao);
+                    this.lidarIgual();
                     break;
                 case ".":
-                    this.lidarDecimal(botao);
+                    this.lidarDecimal();
+                    break;
+                case "AC":
+                    this.lidarClear();
                     break;
                 default:
-                    this.lidarNumeros(botao);
+                    this.lidarNumero(botao);
                     break;
             }
-
         },
         
-        lidarNumeros(numero) {
-            if(this.display == 0) {
+        lidarOperador(operador) {
+            this.numeroAnterior = this.display;
+            this.operador = operador;
+            this.display = '0';
+        }, 
 
+        lidarDecimal() {
+            if(!this.display.includes(".")) {
+                this.display += ".";
+            }
+        },
+
+        lidarIgual() {
+            this.numeroAtual = this.display;
+            switch(this.operador) {
+                case "+":
+                    this.display = parseFloat(this.numeroAnterior) + parseFloat(this.numeroAtual);
+                    break;
+                case "-":
+                    this.display = parseFloat(this.numeroAnterior) - parseFloat(this.numeroAtual);
+                    break;
+                case "*":
+                    this.display = parseFloat(this.numeroAnterior) * parseFloat(this.numeroAtual);
+                    break;
+                case "/":
+                    this.display = parseFloat(this.numeroAnterior) / parseFloat(this.numeroAtual);
+                    break;  
+            }
+        },
+
+        lidarClear() {
+            this.display = '0';
+            this.numeroAnterior = null;
+            this.numeroAtual = null;
+            this.operador = null;
+        },
+
+        lidarNumero(numero) {
+            if(this.display == '0') {
+                this.display = numero;
             } else {
-                this.display += numero.toString(); 
+                this.display += numero; 
             }
         }
     }
-}).mount("#app")
+}).mount("#app");

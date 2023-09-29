@@ -1,0 +1,38 @@
+.linha {
+    display: flex;
+}
+
+button {
+    width:  70px;
+    height: 70px;
+    border: 2px solid white;
+    background-color: rgb(161, 235, 235);
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button:active {
+    background-color: rgb(52, 94, 94);
+}
+
+.operador {
+    background-color: orange;
+}
+
+.display {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculadora {
+    width: 300px;
+}
+
+.igual {
+    background-color: rgb(25, 25, 129);
+    color: aliceblue;
+}
+
