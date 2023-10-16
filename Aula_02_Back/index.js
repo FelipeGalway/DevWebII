@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/Front/index.html");
 })
 let nomes = [];
+
 //CREATE
 app.post("/cadastroNome", (req, res) => {
     const { nome } = req.body;
